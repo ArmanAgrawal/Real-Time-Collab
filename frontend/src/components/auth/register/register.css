@@ -1,0 +1,84 @@
+/* PAGE */
+.register-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 90px;   /* space below navbar */
+}
+
+/* CARD */
+.register-card {
+  width: 380px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* TITLE */
+.register-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* FORM */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* INPUT */
+.register-input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: 14px;
+}
+
+.register-input:focus {
+  outline: none;
+  border-color: #7c8cf8;
+  background: #ffffff;
+}
+
+/* BUTTON */
+.register-btn {
+  padding: 10px;
+  background: #7c8cf8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.register-btn:hover {
+  background: #6b7df0;
+}
+
+/* ERROR */
+.register-error {
+  color: red;
+  font-size: 13px;
+}
+
+/* LOGIN LINK */
+.register-footer {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.register-footer a {
+  color: #7c8cf8;
+  text-decoration: none;
+}
