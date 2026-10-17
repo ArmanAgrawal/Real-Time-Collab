@@ -33,9 +33,10 @@ export const joinWorkspaces = createAsyncThunk(
   "workspace/join",
   async (join_code, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("/api/workspaces/join/", {
-        join_code: join_code,
-      });
+      console.log("Joining workspace with code:", join_code);
+      const res = await axiosInstance.post("/api/workspaces/join/", 
+        join_code
+      );
       console.log(res.data);
       return res.data;
     } catch (err) {

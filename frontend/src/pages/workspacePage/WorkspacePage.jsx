@@ -49,7 +49,7 @@ const WorkSpacePage=()=>{
                 + Create Document
             </button>
 
-            <Document presentations={singleWorkspace.presentations}/>
+            <Document presentations={singleWorkspace.documents}/>
 
         </div>
     )
