@@ -39,6 +39,7 @@ class WorkspaceViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['post'])
     def join(self,request):
         code = request.data.get("join_code")
+        print("Received:", repr(code))
         workspace = Workspace.objects.filter(join_code = code).first()
         if not workspace:
             return Response({"error":"Invalid Join code"},status=400)

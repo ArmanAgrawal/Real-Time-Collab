@@ -96,6 +96,7 @@ urlpatterns = [
     path('api/', include(workspace_router.urls)),
     path('api/', include(presentation_router.urls)),
     path('api/', include(slide_router.urls)),
+    path("api/", include("code_editor.urls")),
 ]
 
 

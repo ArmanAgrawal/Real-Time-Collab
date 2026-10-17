@@ -1,26 +1,37 @@
 import os
+
+os.environ.setdefault(
+    "DJANGO_SETTINGS_MODULE",
+    "collab_backend.settings"
+)
+
 import django
-
-from django.core.asgi import get_asgi_application
-from channels.routing import ProtocolTypeRouter, URLRouter
-from channels.auth import AuthMiddlewareStack
-
-# ✅ SET SETTINGS FIRST
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "collab_backend.settings")
-
-# ✅ THEN SETUP DJANGO
 django.setup()
 
-# ✅ THEN IMPORT YOUR ROUTING
+from django.core.asgi import get_asgi_application
+
+from channels.routing import (
+    ProtocolTypeRouter,
+    URLRouter
+)
+from collab_backend.middleware import JwtAuthMiddleware
+
+
 import presentations.routing
+import code_editor.routing
 
 
 application = ProtocolTypeRouter({
+
     "http": get_asgi_application(),
 
-    "websocket": AuthMiddlewareStack(
+    "websocket": JwtAuthMiddleware(
+
         URLRouter(
+
             presentations.routing.websocket_urlpatterns
+            +
+            code_editor.routing.websocket_urlpatterns
         )
     ),
 })
