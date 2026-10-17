@@ -6,7 +6,7 @@ import slideReducer from "./slices/SlideSlice";
 import chatReducer from './slices/ChatSlice';
 import uiReducer from './slices/UISlice';
 import presentationReducer from './slices/PresentationSlice';
-
+import codeReducer from './slices/CodeSlice';
 
 export const store=configureStore({
     reducer:{
@@ -17,5 +17,6 @@ export const store=configureStore({
         chat:chatReducer,
         ui:uiReducer,
         presentation: presentationReducer,
+        code:codeReducer,
     }
 })

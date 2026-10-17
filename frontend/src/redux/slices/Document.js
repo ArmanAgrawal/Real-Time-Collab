@@ -6,7 +6,13 @@ export const createDocument = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             console.log(data.workspaceId);
-            const res = await axiosInstance.post(`/api/workspaces/${data.workspaceId}/presentations/`, { title: data.title });
+            const res = await axiosInstance.post(
+                `/api/workspaces/${data.workspaceId}/presentations/`,
+                {
+                    title: data.title,
+                    document_type: data.document_type
+                }
+            );
             console.log(res.data);
             return res.data;
         } catch (err) {
@@ -17,8 +23,8 @@ export const createDocument = createAsyncThunk(
 
 
 
-const initialState= {
-    list:[],
+const initialState = {
+    list: [],
     loading: false,
     error: null,
 }
