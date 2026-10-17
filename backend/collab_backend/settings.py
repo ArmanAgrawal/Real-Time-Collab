@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'realtime',
     'presentations',
     "channels",
+    "code_editor",
 
 ]
 

@@ -3,14 +3,49 @@ from django.conf import settings
 from workspaces.models import Workspace
 
 # Create your models here.
+class Document(models.Model):
 
+    DOCUMENT_TYPES = [
+        ("ppt", "PPT"),
+        ("code", "CODE"),
+    ]
 
-class Presentation(models.Model):
     workspace = models.ForeignKey(
         Workspace,
         on_delete=models.CASCADE,
-        related_name="presentations"
+        related_name="documents"
+    )
 
+    title = models.CharField(max_length=255)
+
+    document_type = models.CharField(
+        max_length=20,
+        choices=DOCUMENT_TYPES
+    )
+
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    is_archived = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+
+
+class Presentation(models.Model):
+    document = models.OneToOneField(
+        Document,
+        on_delete=models.CASCADE,
+        related_name="presentation",
+        null=True,
+        blank=True
     )
 
     title = models.CharField(max_length=255)
